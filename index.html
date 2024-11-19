@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SyncDiff: Synchronized Motion Diffusion for Multi-Body Human-Object Interaction Synthesis</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+  <link rel="icon" href="https://twemoji.maxcdn.com/v/latest/svg/1f32e.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">SyncDiff: Synchronized Motion Diffusion for Multi-Body Human-Object Interaction Synthesis</h1>
+          <h3 class="title is-4">Anonymous Writers</h3>
+          <h3 class="title is-4">Paper ID 506</h3>
+          <h3 class="title is-4">CVPR 2025 submission</h3>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" src="./static/images/teaser.png">
+      <h2 class="subtitle has-text-centered">
+        <p><b>SyncDiff is a unified framework synthesizing synchronized multi-body interaction motions with any number of hands, humans, and rigid objects. The key innovations in SyncDiff are two novel multi-body motion synchronization mechanisms, namely the alignment scores and corresponding alignment loss function $\mathcal{L}_{\text{align}}$, and explicit synchronization strategy in inference. These mechanisms can help SyncDiff synthesize realistic, coordinated, and physically plausible motions in various interaction scenarios.</p>
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="results">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <p><b>We will present qualitative results in the order of TACO, CORE4D, OAKINK2, and GRAB. The statistics are as follows:</h2>
+      <p><b>TACO: 12 samples with comparison to baselines (MACS, DiffH2O), 12 samples with comparison to w/o align loss, w/o exp sync, 6 samples with comparison to w/o decompose, 24 single samples of our method (Gallery). 54 samples in total.</b></p>
+      <p><b>CORE4D: 12 samples with comparison to baselines (ComMDM, InterGen, OMOMO), 10 samples with comparison to w/o exp sync(with 4 of them have comparison to w/o align loss), 6 samples with comparison to w/o decompose, 24 single samples of our method (Gallery). 52 samples in total.</b></p>
+      <p><b>OAKINK2: 8 samples with comparison to baselines (MACS, DiffH2O), 10 samples with comparison to w/o exp sync(with 4 of them have comparison to w/o align loss), 24 single samples of our method (Gallery). 42 samples in total.</b></p>
+      <p><b>GRAB: 4 samples with comparison to baselines (MACS, DiffH2O), 8 samples with two possible interactions (Gallery). 12 samples in total.</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- TACO -->
+<section class="section">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">TACO</h2>
+      <h4 class="title is-3"></h4>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h3 class="title" style="text-align: center;"><font color="orange">Comparison to MACS & DiffH2O(12 Samples)</font></h3>
+            <video id="brush_shapes" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/TACO/TACO_baseline.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h3 class="title" style="text-align: center;"><font color="orange">Comparison to w/o decompose(6 Samples)</font></h3>
+            <video id="brush_shapes" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/TACO/TACO_dcac.mp4" type="video/mp4">
+            </video>
+            <p><b>w/o decompose causes oversmooth trajectories. Two objects often remain relatively stable.</h2>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h3 class="title" style="text-align: center;"><font color="orange">Comparison to w/o exp sync & w/o align loss(12 Samples)</font></h3>
+            <video id="brush_shapes" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/TACO/TACO_expimp.mp4" type="video/mp4">
+            </video>
+            <p><b>w/o exp sync or w/o align loss lead to contact loss, unsynchronization, or abnormal shakings.</h2>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h3 class="title" style="text-align: center;"><font color="orange">Gallery(24 Samples)</font></h3>
+            <video id="brush_shapes" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/TACO/TACO_gallery.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- CORE4D -->
+<section class="section">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">CORE4D</h2>
+      <h4 class="title is-3"></h4>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h3 class="title" style="text-align: center;"><font color="orange">Comparison to ComMDM & InterGen & OMOMO(12 Samples)</font></h3>
+            <video id="brush_shapes" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/CORE4D/CORE4D_baseline.mp4" type="video/mp4">
+            </video>
+            <p><b>Among the three methods, OMOMO, with its stagewise optimization method, relatively ensures the hand-object alignment, but still falls short compared to our synchronization strategies. The three methods often fail to complete tasks successfully because they lack the joint distribution and optimization using a single diffusion model. This might cause object trajectories to be unadvantageous, further leading to ineffective collaboration for two humans.
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h3 class="title" style="text-align: center;"><font color="orange">Comparison to w/o decompose(6 Samples)</font></h3>
+            <video id="brush_shapes" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/CORE4D/CORE4D_dcac.mp4" type="video/mp4">
+            </video>
+            <p><b>w/o decompose induces unnatural walking poses(Sometimes sliding on ground), and sometimes unnatural joint rotations. </h2>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h3 class="title" style="text-align: center;"><font color="orange">Comparison to w/o exp sync & w/o align loss(4 Samples)</font></h3>
+            <video id="brush_shapes" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/CORE4D/CORE4D_expimp.mp4" type="video/mp4">
+            </video>
+            <p><b>Synchronization mechanisms still play a significant role in human body-object interaction synthesis.</h2>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h3 class="title" style="text-align: center;"><font color="orange">Comparison to w/o exp sync(6 Samples)</font></h3>
+            <video id="brush_shapes" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/CORE4D/CORE4D_exp.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h3 class="title" style="text-align: center;"><font color="orange">Gallery(24 Samples)</font></h3>
+            <video id="brush_shapes" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/CORE4D/CORE4D_gallery.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- OAKINK2 -->
+<section class="section">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">OAKINK2</h2>
+      <h4 class="title is-3"></h4>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h3 class="title" style="text-align: center;"><font color="orange">Comparison to MACS & DiffH2O(8 Samples)</font></h3>
+            <video id="brush_shapes" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/OAKINK2/OAKINK2_baseline.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h3 class="title" style="text-align: center;"><font color="orange">Comparison to w/o exp sync & w/o align loss(4 Samples)</font></h3>
+            <video id="brush_shapes" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/OAKINK2/OAKINK2_expimp.mp4" type="video/mp4">
+            </video>
+            <p><b>OAKINK2 poses higher demand on fine control of motions, which require the combination of our two synchronization mechanisms.</h2>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h3 class="title" style="text-align: center;"><font color="orange">Comparison to w/o exp sync(6 Samples)</font></h3>
+            <video id="brush_shapes" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/OAKINK2/OAKINK2_exp.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h3 class="title" style="text-align: center;"><font color="orange">Gallery(24 Samples)</font></h3>
+            <video id="brush_shapes" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/OAKINK2/OAKINK2_gallery.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- GRAB -->
+<section class="section">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">OAKINK2</h2>
+      <h4 class="title is-3"></h4>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h3 class="title" style="text-align: center;"><font color="orange">Comparison to MACS & DiffH2O(8 Samples)</font></h3>
+            <video id="brush_shapes" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/GRAB/GRAB_baseline.mp4" type="video/mp4">
+            </video>
+            <p><b>Postgrasp setting. GRAB has slightly lower requirements for synchronization. DiffH2O performs better than MACS, but it is outperformed by our method, particularly in scenarios involving small objects or tricky grasping tasks.</h2>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h3 class="title" style="text-align: center;"><font color="orange">Comparison to w/o exp sync & w/o align loss(4 Samples)</font></h3>
+            <video id="brush_shapes" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/GRAB/GRAB_gallery.mp4" type="video/mp4">
+            </video>
+            <p><b>Here we need to synthesize complete motion sequences rather than just post-grasp ones. We generate two different trajectories using different initial Gaussian noise to demonstrate the diversity of our method.</h2>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- Data Capturing and Annotating -->
+
+<!-- Abstract -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>Synthesizing realistic human-object interaction motions is a critical problem in VR/AR and human animation. Unlike the commonly studied scenarios involving a single human or hand interacting with one object, we address a more generic multi-body setting with arbitrary numbers of humans, hands, and objects. This complexity introduces significant challenges in synchronizing motions due to the high correlations and mutual influences among bodies. To address these challenges, we introduce SyncDiff, a novel method for multi-body interaction synthesis using a synchronized motion diffusion strategy. SyncDiff employs a single diffusion model to capture the joint distribution of multi-body motions. To enhance motion fidelity, we propose a frequency-domain motion decomposition scheme. Additionally, we introduce a new set of alignment scores to emphasize the synchronization of different body motions. SyncDiff jointly optimizes both data sample likelihood and alignment likelihood through an explicit synchronization strategy. Extensive experiments across four datasets with various multi-body configurations demonstrate the superiority of SyncDiff over existing state-of-the-art motion synthesis methods.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Us -->
+<section class="section" id="Contact Us">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Contact Us</h2>
+    <p>The code will be made public after our paper gets accepted.</p>
+  </div>
+</section>
