@@ -7,7 +7,7 @@ video_paths = os.listdir('./')
 
 for video_path in video_paths:
     print(video_path)
-    if 'CORE4D_baseline.mp4' in video_path:
+    if 'CORE4D_expimp.mp4' in video_path:
         cap = cv2.VideoCapture(video_path)
 
         fps = cap.get(cv2.CAP_PROP_FPS)
@@ -18,7 +18,7 @@ for video_path in video_paths:
         output_video_path = video_path.replace('.mp4', '_.mp4')
         #fps = 15
         fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-        size = (1024, 374*2)
+        size = (1536, 374)
         video_writer = cv2.VideoWriter(output_video_path, fourcc, fps, size)
 
         while True:
